@@ -1,0 +1,157 @@
+Date,Product,Sales_Units,Revenue
+2024-01-01,Energy Bars,1390,6225
+2024-01-01,Nut & Seed Bars,741,3693
+2024-01-01,Raw & Fruit Bars,851,3835
+2024-01-08,Energy Bars,1199,5340
+2024-01-08,Nut & Seed Bars,846,4232
+2024-01-08,Raw & Fruit Bars,868,3956
+2024-01-15,Energy Bars,1378,6293
+2024-01-15,Nut & Seed Bars,832,4162
+2024-01-15,Raw & Fruit Bars,857,3819
+2024-01-22,Energy Bars,1433,6373
+2024-01-22,Nut & Seed Bars,791,3926
+2024-01-22,Raw & Fruit Bars,875,3982
+2024-01-29,Energy Bars,1400,6198
+2024-01-29,Nut & Seed Bars,776,3862
+2024-01-29,Raw & Fruit Bars,826,3649
+2024-02-05,Energy Bars,1249,5718
+2024-02-05,Nut & Seed Bars,790,3965
+2024-02-05,Raw & Fruit Bars,886,3947
+2024-02-12,Energy Bars,1383,6261
+2024-02-12,Nut & Seed Bars,795,4054
+2024-02-12,Raw & Fruit Bars,743,3353
+2024-02-19,Energy Bars,1337,6066
+2024-02-19,Nut & Seed Bars,796,3949
+2024-02-19,Raw & Fruit Bars,802,3538
+2024-02-26,Energy Bars,1341,6058
+2024-02-26,Nut & Seed Bars,870,4302
+2024-02-26,Raw & Fruit Bars,786,3512
+2024-03-04,Energy Bars,1359,6101
+2024-03-04,Nut & Seed Bars,823,4098
+2024-03-04,Raw & Fruit Bars,861,3845
+2024-03-11,Energy Bars,1370,6222
+2024-03-11,Nut & Seed Bars,751,3773
+2024-03-11,Raw & Fruit Bars,890,3971
+2024-03-18,Energy Bars,1276,5850
+2024-03-18,Nut & Seed Bars,861,4309
+2024-03-18,Raw & Fruit Bars,818,3725
+2024-03-25,Energy Bars,1416,6442
+2024-03-25,Nut & Seed Bars,809,4050
+2024-03-25,Raw & Fruit Bars,888,4063
+2024-04-01,Energy Bars,1355,6169
+2024-04-01,Nut & Seed Bars,963,4859
+2024-04-01,Raw & Fruit Bars,1316,5882
+2024-04-08,Energy Bars,1240,5667
+2024-04-08,Nut & Seed Bars,921,4537
+2024-04-08,Raw & Fruit Bars,1359,6091
+2024-04-15,Energy Bars,1197,5356
+2024-04-15,Nut & Seed Bars,893,4394
+2024-04-15,Raw & Fruit Bars,1176,5362
+2024-04-22,Energy Bars,1146,5148
+2024-04-22,Nut & Seed Bars,993,4974
+2024-04-22,Raw & Fruit Bars,1169,5309
+2024-04-29,Energy Bars,1256,5709
+2024-04-29,Nut & Seed Bars,981,4959
+2024-04-29,Raw & Fruit Bars,1343,6055
+2024-05-06,Energy Bars,1198,5476
+2024-05-06,Nut & Seed Bars,988,4886
+2024-05-06,Raw & Fruit Bars,1180,5225
+2024-05-13,Energy Bars,1237,5557
+2024-05-13,Nut & Seed Bars,880,4380
+2024-05-13,Raw & Fruit Bars,1142,5098
+2024-05-20,Energy Bars,1193,5343
+2024-05-20,Nut & Seed Bars,859,4315
+2024-05-20,Raw & Fruit Bars,1291,5738
+2024-05-27,Energy Bars,1211,5358
+2024-05-27,Nut & Seed Bars,945,4730
+2024-05-27,Raw & Fruit Bars,1294,5818
+2024-06-03,Energy Bars,1384,6213
+2024-06-03,Nut & Seed Bars,872,4342
+2024-06-03,Raw & Fruit Bars,1282,5756
+2024-06-10,Energy Bars,1304,5778
+2024-06-10,Nut & Seed Bars,890,4502
+2024-06-10,Raw & Fruit Bars,1247,5567
+2024-06-17,Energy Bars,1370,6156
+2024-06-17,Nut & Seed Bars,865,4320
+2024-06-17,Raw & Fruit Bars,1283,5782
+2024-06-24,Energy Bars,1258,5705
+2024-06-24,Nut & Seed Bars,1024,5187
+2024-06-24,Raw & Fruit Bars,1402,6250
+2024-07-01,Energy Bars,1440,6378
+2024-07-01,Nut & Seed Bars,700,3525
+2024-07-01,Raw & Fruit Bars,1460,6512
+2024-07-08,Energy Bars,1594,7173
+2024-07-08,Nut & Seed Bars,737,3663
+2024-07-08,Raw & Fruit Bars,1376,6305
+2024-07-15,Energy Bars,1653,7513
+2024-07-15,Nut & Seed Bars,830,4127
+2024-07-15,Raw & Fruit Bars,1378,6279
+2024-07-22,Energy Bars,1585,7015
+2024-07-22,Nut & Seed Bars,832,4237
+2024-07-22,Raw & Fruit Bars,1328,5986
+2024-07-29,Energy Bars,1462,6577
+2024-07-29,Nut & Seed Bars,740,3734
+2024-07-29,Raw & Fruit Bars,1356,6157
+2024-08-05,Energy Bars,1454,6430
+2024-08-05,Nut & Seed Bars,828,4220
+2024-08-05,Raw & Fruit Bars,1372,6218
+2024-08-12,Energy Bars,1483,6572
+2024-08-12,Nut & Seed Bars,716,3538
+2024-08-12,Raw & Fruit Bars,1384,6235
+2024-08-19,Energy Bars,1466,6538
+2024-08-19,Nut & Seed Bars,809,3970
+2024-08-19,Raw & Fruit Bars,1487,6684
+2024-08-26,Energy Bars,1452,6568
+2024-08-26,Nut & Seed Bars,814,4110
+2024-08-26,Raw & Fruit Bars,1349,6079
+2024-09-02,Energy Bars,1733,7698
+2024-09-02,Nut & Seed Bars,732,3680
+2024-09-02,Raw & Fruit Bars,1292,5825
+2024-09-09,Energy Bars,1618,7269
+2024-09-09,Nut & Seed Bars,850,4231
+2024-09-09,Raw & Fruit Bars,1520,6956
+2024-09-16,Energy Bars,1566,7108
+2024-09-16,Nut & Seed Bars,827,4213
+2024-09-16,Raw & Fruit Bars,1580,7105
+2024-09-23,Energy Bars,1662,7404
+2024-09-23,Nut & Seed Bars,749,3816
+2024-09-23,Raw & Fruit Bars,1472,6755
+2024-09-30,Energy Bars,1518,6699
+2024-09-30,Nut & Seed Bars,809,3993
+2024-09-30,Raw & Fruit Bars,1527,6825
+2024-10-07,Energy Bars,1135,5066
+2024-10-07,Nut & Seed Bars,1105,5512
+2024-10-07,Raw & Fruit Bars,995,4490
+2024-10-14,Energy Bars,1312,5975
+2024-10-14,Nut & Seed Bars,1155,5810
+2024-10-14,Raw & Fruit Bars,1010,4633
+2024-10-21,Energy Bars,1138,5066
+2024-10-21,Nut & Seed Bars,1137,5601
+2024-10-21,Raw & Fruit Bars,1086,4948
+2024-10-28,Energy Bars,1181,5386
+2024-10-28,Nut & Seed Bars,1009,5090
+2024-10-28,Raw & Fruit Bars,946,4192
+2024-11-04,Energy Bars,1326,5927
+2024-11-04,Nut & Seed Bars,1129,5717
+2024-11-04,Raw & Fruit Bars,1066,4840
+2024-11-11,Energy Bars,1304,5959
+2024-11-11,Nut & Seed Bars,1156,5877
+2024-11-11,Raw & Fruit Bars,1064,4724
+2024-11-18,Energy Bars,1130,5089
+2024-11-18,Nut & Seed Bars,1169,5894
+2024-11-18,Raw & Fruit Bars,1111,4970
+2024-11-25,Energy Bars,1289,5837
+2024-11-25,Nut & Seed Bars,1061,5207
+2024-11-25,Raw & Fruit Bars,1103,4894
+2024-12-02,Energy Bars,1319,6029
+2024-12-02,Nut & Seed Bars,1150,5719
+2024-12-02,Raw & Fruit Bars,1033,4687
+2024-12-09,Energy Bars,1141,5064
+2024-12-09,Nut & Seed Bars,1079,5486
+2024-12-09,Raw & Fruit Bars,1116,5038
+2024-12-16,Energy Bars,1293,5739
+2024-12-16,Nut & Seed Bars,1142,5765
+2024-12-16,Raw & Fruit Bars,1004,4427
+2024-12-23,Energy Bars,1267,5663
+2024-12-23,Nut & Seed Bars,1105,5489
+2024-12-23,Raw & Fruit Bars,996,4438

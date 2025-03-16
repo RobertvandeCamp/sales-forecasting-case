@@ -1,0 +1,7 @@
+pandas
+pydantic
+openai
+streamlit
+python-dotenv
+matplotlib
+loguru
