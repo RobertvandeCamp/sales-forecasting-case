@@ -1,14 +1,19 @@
 import streamlit as st
 import pandas as pd
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from app.models.schema import ChatMessage, ChatHistory
 from app.utils.logger import get_logger
+from app.utils.conversation_storage import ConversationStorage
 
 logger = get_logger()
+conversation_storage = ConversationStorage()
 
-def initialize_chat_interface():
+def initialize_chat_interface() -> Optional[str]:
     """
     Initialize the Streamlit chat interface.
+    
+    Returns:
+        Optional[str]: User input message if provided
     """
     # Set page title and icon
     st.set_page_config(
@@ -17,8 +22,73 @@ def initialize_chat_interface():
         layout="wide"
     )
     
-    # Add header
-    st.title("📊 AI-Powered Sales Forecasting Chatbot")
+    # Create a header with username display at top right
+    col1, col2 = st.columns([3, 1])
+    
+    with col1:
+        st.title("📊 AI-Powered Sales Forecasting Chatbot")
+    
+    with col2:
+        # Display username if logged in
+        if "username" in st.session_state and st.session_state.username:
+            st.markdown(f"""
+            <div style="text-align: right; padding-top: 15px; padding-right: 15px;">
+                <p>Welcome: <b>{st.session_state.username}</b></p>
+            </div>
+            """, unsafe_allow_html=True)
+    
+    # User identification section
+    with st.sidebar:
+        st.header("User Identification")
+        
+        # Get available users
+        available_users = conversation_storage.get_available_users()
+        
+        # Initialize username in session state if not exists
+        if "username" not in st.session_state:
+            st.session_state.username = ""
+            
+        # Determine if user is logged in
+        is_logged_in = st.session_state.username != ""
+        
+        if not is_logged_in:
+            # New user input
+            new_username = st.text_input("Enter your username to save conversations:")
+            
+            # Select existing user
+            if available_users:
+                st.write("Or select an existing user:")
+                selected_user = st.selectbox("Select user", [""] + available_users)
+                
+                if selected_user:
+                    new_username = selected_user
+            
+            # Login button
+            if st.button("Login") and new_username:
+                st.session_state.username = new_username
+                
+                # Load previous conversation if user exists
+                if new_username in available_users:
+                    st.session_state.chat_history = conversation_storage.load_conversation(new_username)
+                    st.rerun()
+        else:
+            # Show logged in user
+            st.success(f"Logged in as: {st.session_state.username}")
+            
+            # Logout button
+            if st.button("Logout"):
+                # Save conversation before logout
+                if len(st.session_state.chat_history.messages) > 0:
+                    conversation_storage.save_conversation(
+                        st.session_state.username, 
+                        st.session_state.chat_history
+                    )
+                
+                # Clear username and reset chat history
+                st.session_state.username = ""
+                st.session_state.chat_history = ChatHistory(messages=[])
+                st.rerun()
+    
     st.markdown("""
     Ask questions about sales data and get AI-powered insights.
     
@@ -88,7 +158,14 @@ def add_assistant_message(message: str):
     
     # Add the message to the chat history
     st.session_state.chat_history.messages.append(chat_message)
-
+    
+    # Save conversation if user is logged in
+    if st.session_state.username:
+        conversation_storage.save_conversation(
+            st.session_state.username,
+            st.session_state.chat_history
+        )
+    
     st.rerun()
 
 def display_sales_data_summary(sales_data: pd.DataFrame):
