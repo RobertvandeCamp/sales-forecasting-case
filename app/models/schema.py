@@ -54,4 +54,35 @@ class SalesForecast(BaseModel):
     forecast_units: int
     forecast_revenue: float
     forecast_date: datetime
-    confidence_level: float = Field(default=0.8, ge=0.0, le=1.0, description="Confidence level of the forecast") 
+    confidence_level: float = Field(default=0.8, ge=0.0, le=1.0, description="Confidence level of the forecast")
+
+class MarketInsights(BaseModel):
+    """
+    Pydantic model for market insights from the Assistant.
+    """
+    market_trends: List[Dict[str, str]] = Field(..., description="Market trends affecting the product")
+    competitive_landscape: List[Dict[str, str]] = Field(..., description="Competitive landscape analysis")
+    regulatory_considerations: List[Dict[str, str]] = Field(..., description="Regulatory considerations")
+    
+    class Config:
+        schema_extra = {
+            "example": {
+                "market_trends": [
+                    {"trend": "Growing fitness awareness", "impact": "Positive", "description": "8% growth in energy bar demand due to fitness trends"}
+                ],
+                "competitive_landscape": [
+                    {"competitor": "NewBar Inc", "action": "Market Entry", "impact": "Negative", "description": "New competitor entered market last month"}
+                ],
+                "regulatory_considerations": [
+                    {"regulation": "Nutrition labeling", "timeline": "Next quarter", "impact": "Neutral", "description": "New nutrition labeling requirements take effect"}
+                ]
+            }
+        }
+
+class AugmentedResponse(BaseModel):
+    """
+    Pydantic model for an augmented sales response with market insights.
+    """
+    initial_response: SalesResponse = Field(..., description="The initial sales response based on historical data")
+    market_insights: MarketInsights = Field(..., description="Structured market insights from the Assistant")
+    timestamp: datetime = Field(default_factory=datetime.now, description="Timestamp of the augmented response") 

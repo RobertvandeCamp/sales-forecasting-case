@@ -33,14 +33,14 @@ class OpenAIClient:
     
     def process_sales_query(self, query: SalesQuery, sales_data_summary: Dict[str, Any]) -> SalesResponse:
         """
-        Process a sales query using the OpenAI API.
+        Process a sales query using the OpenAI API with JSON schema response format.
         
         Args:
             query (SalesQuery): The sales query to process
             sales_data_summary (Dict[str, Any]): Summary of sales data to provide context
             
         Returns:
-            SalesResponse: The response to the query
+            SalesResponse: The response to the query with structured data
         """
         try:
             logger.info(f"Processing sales query: {query.query_text}")
@@ -48,30 +48,60 @@ class OpenAIClient:
             # Create system message with context about the sales data
             system_message = self._create_system_message(sales_data_summary)
             
-            # Create user message
-            user_message = query.query_text
+            # Define the JSON schema for the response
+            response_schema = {
+                "type": "object",
+                "properties": {
+                    "products": {
+                        "type": "array",
+                        "items": {"type": "string"},
+                        "description": "Products mentioned in the query"
+                    },
+                    "time_period": {
+                        "type": "string",
+                        "description": "Time period mentioned in the query (e.g., next month, this quarter)"
+                    },
+                    "forecast_text": {
+                        "type": "string",
+                        "description": "The forecast response text"
+                    }
+                },
+                "required": ["products", "time_period", "forecast_text"]
+            }
             
-            # Call OpenAI API
+            # Call OpenAI API with response_format specifying json_schema
             response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
                     {"role": "system", "content": system_message},
-                    {"role": "user", "content": user_message}
+                    {"role": "user", "content": query.query_text}
                 ],
+                response_format={"type": "json_object"},
                 temperature=0.7,
             )
             
-            # Extract response text
-            response_text = response.choices[0].message.content
+            # Extract JSON response
+            response_content = response.choices[0].message.content
+            response_json = json.loads(response_content)
             
-            # Create sales response
+            # Create sales response with structured data
             sales_response = SalesResponse(
                 query=query.query_text,
-                response_text=response_text,
-                data=None  # No structured data for now
+                response_text=response_json["forecast_text"],
+                data={
+                    "products": response_json["products"],
+                    "time_period": response_json["time_period"]
+                }
             )
             
             logger.info(f"Sales query processed successfully")
+            # Convert SalesResponse to a dictionary for JSON serialization
+            response_dict = {
+                "query": sales_response.query,
+                "response_text": sales_response.response_text,
+                "data": sales_response.data
+            }
+            logger.info(f"Sales response: {json.dumps(response_dict, indent=2)}")
             return sales_response
         
         except Exception as e:
@@ -105,6 +135,13 @@ class OpenAIClient:
         3. Be clear about the limitations of your forecast.
         4. Keep responses concise but informative.
         5. If you don't know the answer or the data is insufficient, say so.
+        6. Carefully identify all products mentioned in the query.
+        7. Identify the time period mentioned in the query (e.g., next month, this quarter, next year).
+        
+        Your response will be in JSON format with these fields:
+        - products: An array of product names mentioned in the query
+        - time_period: The time period mentioned in the query
+        - forecast_text: Your natural language response to the query
         
         Now, analyze the user's query and provide the best response you can.
         """

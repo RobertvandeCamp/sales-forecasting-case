@@ -1,0 +1,137 @@
+[
+  {
+    "competitor_id": "CL001",
+    "competitor": "KIND Bars",
+    "action": "New Product Launch",
+    "impact": "Negative",
+    "description": "Launched new line of performance-focused energy bars with increased protein content directly competing with core offerings",
+    "product_category": "Energy Bars",
+    "market_share": 18.5
+  },
+  {
+    "competitor_id": "CL002",
+    "competitor": "CLIF Bar",
+    "action": "Price Reduction",
+    "impact": "Negative",
+    "description": "Implemented 15% price reduction on core products to gain market share in mainstream retail channels",
+    "product_category": "Energy Bars",
+    "market_share": 22.3
+  },
+  {
+    "competitor_id": "CL003",
+    "competitor": "LÄRABAR",
+    "action": "Marketing Campaign",
+    "impact": "Negative",
+    "description": "Launched major digital marketing campaign emphasizing clean ingredients and sustainable sourcing",
+    "product_category": "Raw & Fruit Bars",
+    "market_share": 14.2
+  },
+  {
+    "competitor_id": "CL004",
+    "competitor": "RXBar",
+    "action": "Distribution Expansion",
+    "impact": "Negative",
+    "description": "Secured exclusive distribution deal with major national gym chain for point-of-workout availability",
+    "product_category": "Energy Bars",
+    "market_share": 12.8
+  },
+  {
+    "competitor_id": "CL005",
+    "competitor": "Nature Valley",
+    "action": "Product Reformulation",
+    "impact": "Neutral",
+    "description": "Reformulated bestselling nut bars to eliminate artificial ingredients and reduce sugar content",
+    "product_category": "Nut & Seed Bars",
+    "market_share": 26.7
+  },
+  {
+    "competitor_id": "CL006",
+    "competitor": "Perfect Bar",
+    "action": "Packaging Redesign",
+    "impact": "Neutral",
+    "description": "Implemented new eco-friendly packaging with enhanced shelf appeal and sustainability messaging",
+    "product_category": "All",
+    "market_share": 8.3
+  },
+  {
+    "competitor_id": "CL007",
+    "competitor": "GoMacro",
+    "action": "New Product Launch",
+    "impact": "Negative",
+    "description": "Introduced new organic seed-based bar formulations with competitive pricing",
+    "product_category": "Nut & Seed Bars",
+    "market_share": 6.9
+  },
+  {
+    "competitor_id": "CL008",
+    "competitor": "Quest Nutrition",
+    "action": "Retail Partnership",
+    "impact": "Negative",
+    "description": "Formed exclusive partnership with major national retailer for promotional endcap displays",
+    "product_category": "Energy Bars",
+    "market_share": 15.1
+  },
+  {
+    "competitor_id": "CL009",
+    "competitor": "Nakd Bars",
+    "action": "Market Entry",
+    "impact": "Negative",
+    "description": "European competitor entering US market with aggressive pricing and marketing",
+    "product_category": "Raw & Fruit Bars",
+    "market_share": 4.2
+  },
+  {
+    "competitor_id": "CL010",
+    "competitor": "Homegrown Startup",
+    "action": "Capital Investment",
+    "impact": "Neutral",
+    "description": "Local competitor secured $5M funding round for expanded production and marketing",
+    "product_category": "All",
+    "market_share": 1.5
+  },
+  {
+    "competitor_id": "CL011",
+    "competitor": "Luna Bar",
+    "action": "Seasonal Promotion",
+    "impact": "Negative",
+    "description": "Launched fall wellness campaign coinciding with increased nut bar demand in October-December",
+    "product_category": "Nut & Seed Bars",
+    "market_share": 10.2
+  },
+  {
+    "competitor_id": "CL012",
+    "competitor": "Bobo's Oat Bars",
+    "action": "Distribution Expansion",
+    "impact": "Negative",
+    "description": "Expanded from natural channel into conventional grocery nationwide affecting Raw & Fruit Bar sales",
+    "product_category": "Raw & Fruit Bars",
+    "market_share": 6.8
+  },
+  {
+    "competitor_id": "CL013",
+    "competitor": "Clif Kid ZBar",
+    "action": "School Program",
+    "impact": "Negative",
+    "description": "Implemented school nutrition partnership program with promotional pricing for fall semester",
+    "product_category": "All",
+    "market_share": 4.7
+  },
+  {
+    "competitor_id": "CL014",
+    "competitor": "Thunderbird",
+    "action": "Direct-to-Consumer Focus",
+    "impact": "Neutral",
+    "description": "Shifted marketing budget from retail to DTC channels with subscription model",
+    "product_category": "Raw & Fruit Bars",
+    "market_share": 3.1
+  },
+  {
+    "competitor_id": "CL015",
+    "competitor": "Bob's Red Mill",
+    "action": "Category Entry",
+    "impact": "Negative",
+    "description": "Major ingredient supplier entered finished product category with competitive pricing strategy",
+    "product_category": "Nut & Seed Bars",
+    "market_share": 2.9
+  }
+] 

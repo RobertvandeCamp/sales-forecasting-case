@@ -1,0 +1,122 @@
+[
+  {
+    "trend_id": "MT001",
+    "trend": "Plant-based protein shift",
+    "impact": "Positive",
+    "description": "Growing consumer preference for plant-based protein sources driving increased demand for bars with plant proteins like pea and hemp",
+    "product_category": "Energy Bars",
+    "relevance_score": 0.9
+  },
+  {
+    "trend_id": "MT002",
+    "trend": "Clean label movement",
+    "impact": "Positive",
+    "description": "Consumers increasingly seeking products with recognizable ingredients and minimal processing",
+    "product_category": "Nut & Seed Bars",
+    "relevance_score": 0.95
+  },
+  {
+    "trend_id": "MT003",
+    "trend": "Functional ingredients trend",
+    "impact": "Positive",
+    "description": "Rising interest in bars with added functional benefits like adaptogens or probiotics",
+    "product_category": "Energy Bars",
+    "relevance_score": 0.85
+  },
+  {
+    "trend_id": "MT004",
+    "trend": "Sustainable packaging demand",
+    "impact": "Neutral",
+    "description": "Consumer preference shifting toward eco-friendly packaging materials though implementation costs are high",
+    "product_category": "All",
+    "relevance_score": 0.8
+  },
+  {
+    "trend_id": "MT005",
+    "trend": "Sugar reduction focus",
+    "impact": "Positive",
+    "description": "Growing consumer awareness and avoidance of added sugars driving innovation in naturally sweetened products",
+    "product_category": "Raw & Fruit Bars",
+    "relevance_score": 0.9
+  },
+  {
+    "trend_id": "MT006",
+    "trend": "Personalized nutrition growth",
+    "impact": "Positive",
+    "description": "Increasing consumer interest in products tailored to specific dietary needs and fitness goals",
+    "product_category": "Energy Bars",
+    "relevance_score": 0.75
+  },
+  {
+    "trend_id": "MT007",
+    "trend": "Convenience snacking rise",
+    "impact": "Positive",
+    "description": "Accelerating demand for on-the-go nutritious snacks that fit busy lifestyles",
+    "product_category": "All",
+    "relevance_score": 0.95
+  },
+  {
+    "trend_id": "MT008",
+    "trend": "Premium snacking segment growth",
+    "impact": "Positive",
+    "description": "Expanding market for higher-priced specialty bars with premium ingredients and positioning",
+    "product_category": "Nut & Seed Bars",
+    "relevance_score": 0.8
+  },
+  {
+    "trend_id": "MT009",
+    "trend": "Direct-to-consumer expansion",
+    "impact": "Neutral",
+    "description": "Shift toward online purchasing and subscription models for specialty food products",
+    "product_category": "All",
+    "relevance_score": 0.7
+  },
+  {
+    "trend_id": "MT010",
+    "trend": "Economic inflation pressure",
+    "impact": "Negative",
+    "description": "Rising ingredient and production costs putting pressure on margins and consumer price sensitivity",
+    "product_category": "All",
+    "relevance_score": 0.85
+  },
+  {
+    "trend_id": "MT011",
+    "trend": "Seasonal wellness demand",
+    "impact": "Positive",
+    "description": "Increased focus on immune-supporting ingredients during fall/winter months",
+    "product_category": "Energy Bars",
+    "relevance_score": 0.8
+  },
+  {
+    "trend_id": "MT012",
+    "trend": "Summer activity boost",
+    "impact": "Positive",
+    "description": "Higher demand for portable nutrition during peak outdoor activity months",
+    "product_category": "Raw & Fruit Bars",
+    "relevance_score": 0.85
+  },
+  {
+    "trend_id": "MT013",
+    "trend": "Back-to-school shopping surge",
+    "impact": "Positive",
+    "description": "Increased purchases of convenient snack options for school lunches during late summer",
+    "product_category": "All",
+    "relevance_score": 0.8
+  },
+  {
+    "trend_id": "MT014",
+    "trend": "Holiday gift giving",
+    "impact": "Neutral",
+    "description": "Inclusion of premium snack products in holiday gift baskets and corporate gifting",
+    "product_category": "Nut & Seed Bars",
+    "relevance_score": 0.7
+  },
+  {
+    "trend_id": "MT015",
+    "trend": "Sustainability credentials importance",
+    "impact": "Positive",
+    "description": "Growing consumer preference for brands with transparent sustainability practices",
+    "product_category": "All",
+    "relevance_score": 0.8
+  }
+] 

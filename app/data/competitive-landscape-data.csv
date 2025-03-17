@@ -1,0 +1,16 @@
+competitor_id,competitor,action,impact,description,product_category,market_share
+CL001,KIND Bars,New Product Launch,Negative,Launched new line of performance-focused energy bars with increased protein content directly competing with core offerings,Energy Bars,18.5
+CL002,CLIF Bar,Price Reduction,Negative,Implemented 15% price reduction on core products to gain market share in mainstream retail channels,Energy Bars,22.3
+CL003,LÄRABAR,Marketing Campaign,Negative,Launched major digital marketing campaign emphasizing clean ingredients and sustainable sourcing,Raw & Fruit Bars,14.2
+CL004,RXBar,Distribution Expansion,Negative,Secured exclusive distribution deal with major national gym chain for point-of-workout availability,Energy Bars,12.8
+CL005,Nature Valley,Product Reformulation,Neutral,Reformulated bestselling nut bars to eliminate artificial ingredients and reduce sugar content,Nut & Seed Bars,26.7
+CL006,Perfect Bar,Packaging Redesign,Neutral,Implemented new eco-friendly packaging with enhanced shelf appeal and sustainability messaging,All,8.3
+CL007,GoMacro,New Product Launch,Negative,Introduced new organic seed-based bar formulations with competitive pricing,Nut & Seed Bars,6.9
+CL008,Quest Nutrition,Retail Partnership,Negative,Formed exclusive partnership with major national retailer for promotional endcap displays,Energy Bars,15.1
+CL009,Nakd Bars,Market Entry,Negative,European competitor entering US market with aggressive pricing and marketing,Raw & Fruit Bars,4.2
+CL010,Homegrown Startup,Capital Investment,Neutral,Local competitor secured $5M funding round for expanded production and marketing,All,1.5
+CL011,Luna Bar,Seasonal Promotion,Negative,Launched fall wellness campaign coinciding with increased nut bar demand in October-December,Nut & Seed Bars,10.2
+CL012,Bobo's Oat Bars,Distribution Expansion,Negative,Expanded from natural channel into conventional grocery nationwide affecting Raw & Fruit Bar sales,Raw & Fruit Bars,6.8
+CL013,Clif Kid ZBar,School Program,Negative,Implemented school nutrition partnership program with promotional pricing for fall semester,All,4.7
+CL014,Thunderbird,Direct-to-Consumer Focus,Neutral,Shifted marketing budget from retail to DTC channels with subscription model,Raw & Fruit Bars,3.1
+CL015,Bob's Red Mill,Category Entry,Negative,Major ingredient supplier entered finished product category with competitive pricing strategy,Nut & Seed Bars,2.9

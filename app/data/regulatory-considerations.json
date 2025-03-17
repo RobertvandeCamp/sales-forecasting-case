@@ -1,0 +1,137 @@
+[
+  {
+    "regulatory_id": "RC001",
+    "regulation": "Updated Nutrition Facts Panel Requirements",
+    "timeline": "Q3 2025",
+    "impact": "Neutral",
+    "description": "FDA mandating revised nutrition facts panel with added sugar disclosure and updated serving sizes",
+    "product_category": "All",
+    "compliance_cost": "Medium"
+  },
+  {
+    "regulatory_id": "RC002",
+    "regulation": "Organic Certification Standards Revision",
+    "timeline": "Q4 2025",
+    "impact": "Positive",
+    "description": "USDA implementing stricter organic certification requirements that may benefit established organic producers",
+    "product_category": "Raw & Fruit Bars",
+    "compliance_cost": "High"
+  },
+  {
+    "regulatory_id": "RC003",
+    "regulation": "Allergen Labeling Expansion",
+    "timeline": "Q2 2025",
+    "impact": "Negative",
+    "description": "New requirements to highlight additional allergens beyond current mandated list increasing compliance complexity",
+    "product_category": "Nut & Seed Bars",
+    "compliance_cost": "Medium"
+  },
+  {
+    "regulatory_id": "RC004",
+    "regulation": "Sustainable Packaging Incentives",
+    "timeline": "Q1 2026",
+    "impact": "Positive",
+    "description": "Tax incentives for companies using minimum 30% recycled content in packaging materials",
+    "product_category": "All",
+    "compliance_cost": "Medium-High"
+  },
+  {
+    "regulatory_id": "RC005",
+    "regulation": "Non-GMO Verification Program Changes",
+    "timeline": "Q3 2025",
+    "impact": "Neutral",
+    "description": "Revised testing and certification requirements for non-GMO claims on product packaging",
+    "product_category": "All",
+    "compliance_cost": "Medium"
+  },
+  {
+    "regulatory_id": "RC006",
+    "regulation": "Import Tariffs on Selected Nuts",
+    "timeline": "Current",
+    "impact": "Negative",
+    "description": "Recent 12% tariff increase on selected imported nuts affecting production costs for nut-based bars",
+    "product_category": "Nut & Seed Bars",
+    "compliance_cost": "High"
+  },
+  {
+    "regulatory_id": "RC007",
+    "regulation": "Clean Label Definition Standards",
+    "timeline": "Q1 2026",
+    "impact": "Positive",
+    "description": "Industry association establishing certified \"clean label\" standards creating competitive advantage for compliant products",
+    "product_category": "All",
+    "compliance_cost": "Low"
+  },
+  {
+    "regulatory_id": "RC008",
+    "regulation": "Sugar Tax Proposal",
+    "timeline": "Under Discussion",
+    "impact": "Negative",
+    "description": "Potential local and state taxes on products exceeding certain sugar content thresholds",
+    "product_category": "Raw & Fruit Bars",
+    "compliance_cost": "Unknown"
+  },
+  {
+    "regulatory_id": "RC009",
+    "regulation": "Hemp-Derived Ingredient Regulations",
+    "timeline": "Q2 2025",
+    "impact": "Positive",
+    "description": "FDA clarifying regulations around hemp-derived ingredients in food products",
+    "product_category": "Energy Bars",
+    "compliance_cost": "Low"
+  },
+  {
+    "regulatory_id": "RC010",
+    "regulation": "Supply Chain Transparency Requirements",
+    "timeline": "Q4 2025",
+    "impact": "Neutral",
+    "description": "New requirements for documenting ingredient sources and sustainability practices",
+    "product_category": "All",
+    "compliance_cost": "Medium"
+  },
+  {
+    "regulatory_id": "RC011",
+    "regulation": "Seasonal Ingredient Availability Regulations",
+    "timeline": "Q3 2025",
+    "impact": "Neutral",
+    "description": "New guidelines on seasonal ingredient sourcing claims and documentation requirements",
+    "product_category": "Raw & Fruit Bars",
+    "compliance_cost": "Low"
+  },
+  {
+    "regulatory_id": "RC012",
+    "regulation": "School Nutrition Program Requirements",
+    "timeline": "Current",
+    "impact": "Positive",
+    "description": "Updated federal guidelines for acceptable snack products in school nutrition programs",
+    "product_category": "All",
+    "compliance_cost": "Low"
+  },
+  {
+    "regulatory_id": "RC013",
+    "regulation": "Compostable Packaging Standards",
+    "timeline": "Q2 2025",
+    "impact": "Positive",
+    "description": "New certification standards for compostable packaging materials with implementation timeline",
+    "product_category": "All",
+    "compliance_cost": "Medium"
+  },
+  {
+    "regulatory_id": "RC014",
+    "regulation": "Small Business Exemption Thresholds",
+    "timeline": "Q1 2025",
+    "impact": "Positive",
+    "description": "Adjusted revenue thresholds for small business exemptions from certain regulatory requirements",
+    "product_category": "All",
+    "compliance_cost": "Low"
+  },
+  {
+    "regulatory_id": "RC015",
+    "regulation": "Cross-Border E-commerce Regulations",
+    "timeline": "Q3 2025",
+    "impact": "Neutral",
+    "description": "New requirements for labeling and ingredient disclosure for products sold online across state lines",
+    "product_category": "All",
+    "compliance_cost": "Medium"
+  }
+] 
