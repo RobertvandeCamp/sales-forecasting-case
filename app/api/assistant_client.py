@@ -53,7 +53,6 @@ class AssistantClient:
             
             # Create a thread
             thread = self.client.beta.threads.create()
-            logger.info(f"Thread created with ID: {thread.id}")
             
             # Add a message to the thread
             message_content = self._create_message_content(sales_response, product, time_period)
@@ -88,7 +87,7 @@ class AssistantClient:
             assistant_response = messages.data[0].content[0].text.value
             
             # Log the raw response from assistant
-            logger.info(f"Raw assistant response:\n{assistant_response}")
+            # logger.info(f"Raw assistant response:\n{assistant_response}")
             
             # Parse JSON response
             try:
@@ -102,7 +101,7 @@ class AssistantClient:
                     # Try direct parsing if no code block markers
                     market_insights_dict = json.loads(assistant_response)
                 
-                logger.info(f"Successfully parsed JSON response: {json.dumps(market_insights_dict, indent=2)}")
+                # logger.info(f"Successfully parsed JSON response: {json.dumps(market_insights_dict, indent=2)}")
                 market_insights = MarketInsights(**market_insights_dict)
             except (json.JSONDecodeError, ValueError) as e:
                 logger.error(f"Error parsing JSON response: {str(e)}")
@@ -147,34 +146,7 @@ class AssistantClient:
         Initial Forecast (based on historical data):
         {sales_response.response_text}
         
-        Respond with a JSON object containing the following structure:
-        {{
-            "market_trends": [
-                {{
-                    "trend": "string", 
-                    "impact": "Positive/Negative/Neutral", 
-                    "description": "detailed description"
-                }}
-            ],
-            "competitive_landscape": [
-                {{
-                    "competitor": "string",
-                    "action": "string",
-                    "impact": "Positive/Negative/Neutral",
-                    "description": "detailed description"
-                }}
-            ],
-            "regulatory_considerations": [
-                {{
-                    "regulation": "string",
-                    "timeline": "string",
-                    "impact": "Positive/Negative/Neutral",
-                    "description": "detailed description"
-                }}
-            ]
-        }}
-        
-        Provide only the JSON object without any additional text or markdown formatting.
+        Provide only the JSON object in your instructions without any additional text or markdown formatting.
         """
     
     def _wait_for_run(self, thread_id: str, run_id: str, max_wait_seconds: int = 120) -> Any:
