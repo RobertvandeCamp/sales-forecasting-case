@@ -1,9 +1,9 @@
 import os
 import json
 import openai
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any
 from app.utils.logger import get_logger
-from app.models.schema import SalesQuery, SalesResponse
+from app.models.schema import SalesQuery, SalesAnalysisResponse
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -31,7 +31,7 @@ class OpenAIClient:
         self.model = model
         logger.info(f"OpenAI client initialized with model: {model}")
     
-    def process_sales_query(self, query: SalesQuery, sales_data_summary: Dict[str, Any]) -> SalesResponse:
+    def process_sales_query(self, query: SalesQuery, sales_data_summary: Dict[str, Any]) -> SalesAnalysisResponse:
         """
         Process a sales query using the OpenAI API with JSON schema response format.
         
@@ -40,7 +40,7 @@ class OpenAIClient:
             sales_data_summary (Dict[str, Any]): Summary of sales data to provide context
             
         Returns:
-            SalesResponse: The response to the query with structured data
+            SalesAnalysisResponse: The response to the query with structured data
         """
         try:
             logger.info(f"Processing sales query: {query.query_text}")
@@ -48,60 +48,23 @@ class OpenAIClient:
             # Create system message with context about the sales data
             system_message = self._create_system_message(sales_data_summary)
             
-            # Define the JSON schema for the response
-            response_schema = {
-                "type": "object",
-                "properties": {
-                    "products": {
-                        "type": "array",
-                        "items": {"type": "string"},
-                        "description": "Products mentioned in the query"
-                    },
-                    "time_period": {
-                        "type": "string",
-                        "description": "Time period mentioned in the query (e.g., next month, this quarter)"
-                    },
-                    "forecast_text": {
-                        "type": "string",
-                        "description": "The forecast response text"
-                    }
-                },
-                "required": ["products", "time_period", "forecast_text"]
-            }
-            
-            # Call OpenAI API with response_format specifying json_schema
-            response = self.client.chat.completions.create(
+            completion = self.client.beta.chat.completions.parse(
                 model=self.model,
                 messages=[
                     {"role": "system", "content": system_message},
                     {"role": "user", "content": query.query_text}
                 ],
-                response_format={"type": "json_object"},
+                response_format=SalesAnalysisResponse,
                 temperature=0.7,
             )
-            
-            # Extract JSON response
-            response_content = response.choices[0].message.content
-            response_json = json.loads(response_content)
-            
-            # Create sales response with structured data
-            sales_response = SalesResponse(
-                query=query.query_text,
-                response_text=response_json["forecast_text"],
-                data={
-                    "products": response_json["products"],
-                    "time_period": response_json["time_period"]
-                }
-            )
-            
+
+            sales_response = completion.choices[0].message.parsed
+
+            logger.debug(f"Response {sales_response.response_text}")
+            logger.debug(f"Response {sales_response.products}")
+            logger.debug(f"Response {sales_response.time_period}")
+
             logger.info(f"Sales query processed successfully")
-            # Convert SalesResponse to a dictionary for JSON serialization
-            response_dict = {
-                "query": sales_response.query,
-                "response_text": sales_response.response_text,
-                "data": sales_response.data
-            }
-            logger.info(f"Sales response: {json.dumps(response_dict, indent=2)}")
             return sales_response
         
         except Exception as e:

@@ -1,10 +1,11 @@
 import os
 import time
 import json
-from typing import Dict, Any, Optional, List
+from typing import Any, Optional
 from openai import OpenAI
 from app.utils.logger import get_logger
-from app.models.schema import SalesResponse, AugmentedResponse, MarketInsights
+from app.models.schema import SalesAnalysisResponse, AugmentedResponse, MarketInsights, NewMarketInsights
+from pydantic_core import from_json
 
 # Initialize logger
 logger = get_logger()
@@ -31,20 +32,20 @@ class AssistantClient:
         self.client = OpenAI(api_key=self.api_key)
         logger.info("Assistant client initialized successfully")
         
-    def augment_sales_response(self, sales_response: SalesResponse) -> AugmentedResponse:
+    def augment_sales_response(self, sales_response: SalesAnalysisResponse) -> AugmentedResponse:
         """
         Augment a sales response with market insights from the Assistant.
         
         Args:
-            sales_response (SalesResponse): The initial sales response with structured data
+            sales_response (SalesAnalysisResponse): The initial sales response with structured data
             
         Returns:
             AugmentedResponse: The augmented response with market insights
         """
         try:
             # Extract products and time period from the structured data
-            products = sales_response.data.get("products", [])
-            time_period = sales_response.data.get("time_period", "unknown")
+            products = sales_response.products
+            time_period = sales_response.time_period
             
             # Use first product if multiple products are mentioned
             product = products[0] if products else "unknown"
@@ -56,7 +57,7 @@ class AssistantClient:
             
             # Add a message to the thread
             message_content = self._create_message_content(sales_response, product, time_period)
-            logger.info(f"Message content being sent to Assistant:\n{message_content}")
+            logger.debug(f"Message content being sent to Assistant:\n{message_content}")
             
             self.client.beta.threads.messages.create(
                 thread_id=thread.id,
@@ -86,36 +87,25 @@ class AssistantClient:
             # Extract the assistant's response
             assistant_response = messages.data[0].content[0].text.value
             
-            # Log the raw response from assistant
-            # logger.info(f"Raw assistant response:\n{assistant_response}")
-            
-            # Parse JSON response
             try:
-                # Check if response contains JSON code block markers
-                if "```json" in assistant_response and "```" in assistant_response.split("```json", 1)[1]:
-                    # Extract JSON between the markers
-                    json_content = assistant_response.split("```json", 1)[1].split("```", 1)[0].strip()
-                    logger.info(f"Extracted JSON from code block: {json_content[:100]}...")
-                    market_insights_dict = json.loads(json_content)
-                else:
-                    # Try direct parsing if no code block markers
-                    market_insights_dict = json.loads(assistant_response)
-                
-                # logger.info(f"Successfully parsed JSON response: {json.dumps(market_insights_dict, indent=2)}")
-                market_insights = MarketInsights(**market_insights_dict)
-            except (json.JSONDecodeError, ValueError) as e:
-                logger.error(f"Error parsing JSON response: {str(e)}")
-                # Create a default structure if JSON parsing fails
-                market_insights = MarketInsights(
-                    market_trends=[{"description": "Could not parse market trends", "impact": "Unknown"}],
-                    competitive_landscape=[{"description": "Could not parse competitive landscape", "impact": "Unknown"}],
-                    regulatory_considerations=[{"description": "Could not parse regulatory considerations", "impact": "Unknown"}]
-                )
-            
+                new_market_insights = NewMarketInsights.model_validate(from_json(assistant_response))
+                logger.debug(f"New market insights: {new_market_insights.market_trends}")
+                logger.debug(f"New market insights: {new_market_insights.competitive_landscape}")
+                logger.debug(f"New market insights: {new_market_insights.regulatory_considerations}")
+            except ValueError as e:
+                logger.error(f"Error parsing json model into pydantic model NewMarketInsights")
+
+                # market_insights = MarketInsights(
+                #     market_trends=[{"description": "Could not parse market trends", "impact": "Unknown"}],
+                #     competitive_landscape=[{"description": "Could not parse competitive landscape", "impact": "Unknown"}],
+                #     regulatory_considerations=[{"description": "Could not parse regulatory considerations", "impact": "Unknown"}]
+                # )
+                  
+           
             # Create augmented response
             augmented_response = AugmentedResponse(
                 initial_response=sales_response,
-                market_insights=market_insights
+                market_insights=new_market_insights
             )
             
             logger.info("Sales response augmented successfully")
@@ -125,7 +115,7 @@ class AssistantClient:
             logger.error(f"Error augmenting sales response: {str(e)}")
             raise
     
-    def _create_message_content(self, sales_response: SalesResponse, product: str, time_period: str) -> str:
+    def _create_message_content(self, sales_response: SalesAnalysisResponse, product: str, time_period: str) -> str:
         """
         Create the message content to send to the Assistant.
         

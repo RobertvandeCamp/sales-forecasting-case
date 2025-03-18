@@ -148,7 +148,7 @@ def add_assistant_message(message: str):
         message (str): The assistant message
     """
     # Log the assistant message
-    logger.info(f"Assistant message: {message}")
+    logger.debug(f"Assistant message: {message}")
     
     # Create a chat message
     chat_message = ChatMessage(

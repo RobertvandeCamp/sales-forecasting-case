@@ -12,7 +12,7 @@ from ui.chat_interface import (
     add_assistant_message,
     display_sales_data_summary
 )
-from models.schema import SalesQuery, SalesResponse, AugmentedResponse
+from models.schema import SalesQuery, SalesAnalysisResponse, AugmentedResponse
 from app.data.sales_data_service import generate_sales_data_summary
 from app.api.assistant_client import AssistantClient
 
@@ -47,17 +47,17 @@ def main():
             
             # Process query with OpenAI (Stage 1: Historical Analysis)
             with st.spinner("Analyzing historical data..."):
-                sales_response = st.session_state.openai_client.process_sales_query(sales_query, st.session_state.sales_data_summary)
+                sales_response:SalesAnalysisResponse = st.session_state.openai_client.process_sales_query(sales_query, st.session_state.sales_data_summary)
             
             # Check if we have products and time period in the structured data
-            has_product = sales_response.data and "products" in sales_response.data and len(sales_response.data["products"]) > 0
-            has_time_period = sales_response.data and "time_period" in sales_response.data and sales_response.data["time_period"] != "unknown"
+            has_product = len(sales_response.products) > 0
+            has_time_period = sales_response.time_period != "unknown"
             
             # Only proceed with augmentation if we have identified products and time period
             if has_product and has_time_period:
                 # Process with Assistant (Stage 2: Market Context Augmentation)
                 with st.spinner("Gathering market insights..."):
-                    augmented_response = st.session_state.assistant_client.augment_sales_response(sales_response)
+                    augmented_response:AugmentedResponse = st.session_state.assistant_client.augment_sales_response(sales_response)
                 
                 # Format the combined response for display
                 combined_response = format_augmented_response(augmented_response)
@@ -116,10 +116,10 @@ def format_augmented_response(augmented_response: AugmentedResponse) -> str:
     
     # Format market trends with proper spacing
     market_trends = []
-    for trend in market_insights.market_trends:
-        trend_name = trend.get("trend", "")
-        impact = trend.get("impact", "")
-        description = trend.get("description", "")
+    for market_trend in market_insights.market_trends:
+        trend_name = market_trend.trend
+        impact = market_trend.impact
+        description = market_trend.description
         if trend_name:
             market_trends.append(f"• {trend_name} ({impact}): {description}")
         else:
@@ -128,10 +128,10 @@ def format_augmented_response(augmented_response: AugmentedResponse) -> str:
     # Format competitive landscape with proper spacing
     competitive_landscape = []
     for comp in market_insights.competitive_landscape:
-        competitor = comp.get("competitor", "")
-        action = comp.get("action", "")
-        impact = comp.get("impact", "")
-        description = comp.get("description", "")
+        competitor = comp.competitor
+        action = comp.action
+        impact = comp.impact
+        description = comp.description
         if competitor:
             competitive_landscape.append(f"• {competitor} - {action} ({impact}): {description}")
         else:
@@ -140,10 +140,10 @@ def format_augmented_response(augmented_response: AugmentedResponse) -> str:
     # Format regulatory considerations with proper spacing
     regulatory_considerations = []
     for reg in market_insights.regulatory_considerations:
-        regulation = reg.get("regulation", "")
-        timeline = reg.get("timeline", "")
-        impact = reg.get("impact", "")
-        description = reg.get("description", "")
+        regulation = reg.regulation
+        timeline = reg.timeline
+        impact = reg.impact
+        description = reg.description
         if regulation:
             regulatory_considerations.append(f"• {regulation} - {timeline} ({impact}): {description}")
         else:
