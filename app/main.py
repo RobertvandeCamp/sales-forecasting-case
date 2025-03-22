@@ -104,13 +104,13 @@ def load_sales_data_and_summary():
 
 def format_augmented_response(augmented_response: AugmentedResponse) -> str:
     """
-    Format an augmented response for display.
+    Format an augmented response for display using Markdown for better Streamlit presentation.
     
     Args:
         augmented_response (AugmentedResponse): The augmented response
         
     Returns:
-        str: The formatted response
+        str: The formatted response in Markdown format
     """
     # Get the initial response
     initial_response = augmented_response.initial_response.response_text
@@ -118,65 +118,97 @@ def format_augmented_response(augmented_response: AugmentedResponse) -> str:
     # Get the market insights
     market_insights = augmented_response.market_insights
     
-    # Format market trends with proper spacing
+    # Format market trends with proper Markdown
     market_trends = []
     for market_trend in market_insights.market_trends:
         trend_name = market_trend.trend
         impact = market_trend.impact
         description = market_trend.description
+        
+        # Format impact with color indicators using Markdown
+        impact_formatted = f"**{impact}**"
+        if impact == "Positive":
+            impact_formatted = f"**:green[{impact}]**"
+        elif impact == "Negative":
+            impact_formatted = f"**:red[{impact}]**"
+        elif impact == "Neutral":
+            impact_formatted = f"**:blue[{impact}]**"
+        
         if trend_name:
-            market_trends.append(f"• {trend_name} ({impact}): {description}")
+            market_trends.append(f"* **{trend_name}** ({impact_formatted}): {description}")
         else:
-            market_trends.append(f"• {description}")
+            market_trends.append(f"* {description}")
     
-    # Format competitive landscape with proper spacing
+    # Format competitive landscape with proper Markdown
     competitive_landscape = []
     for comp in market_insights.competitive_landscape:
         competitor = comp.competitor
         action = comp.action
         impact = comp.impact
         description = comp.description
+        
+        # Format impact with color indicators using Markdown
+        impact_formatted = f"**{impact}**"
+        if impact == "Positive":
+            impact_formatted = f"**:green[{impact}]**"
+        elif impact == "Negative":
+            impact_formatted = f"**:red[{impact}]**"
+        elif impact == "Neutral":
+            impact_formatted = f"**:blue[{impact}]**"
+        
         if competitor:
-            competitive_landscape.append(f"• {competitor} - {action} ({impact}): {description}")
+            competitive_landscape.append(f"* **{competitor}** - {action} ({impact_formatted}): {description}")
         else:
-            competitive_landscape.append(f"• {description}")
+            competitive_landscape.append(f"* {description}")
     
-    # Format regulatory considerations with proper spacing
+    # Format regulatory considerations with proper Markdown
     regulatory_considerations = []
     for reg in market_insights.regulatory_considerations:
         regulation = reg.regulation
         timeline = reg.timeline
         impact = reg.impact
         description = reg.description
+        
+        # Format impact with color indicators using Markdown
+        impact_formatted = f"**{impact}**"
+        if impact == "Positive":
+            impact_formatted = f"**:green[{impact}]**"
+        elif impact == "Negative":
+            impact_formatted = f"**:red[{impact}]**"
+        elif impact == "Neutral":
+            impact_formatted = f"**:blue[{impact}]**"
+        
         if regulation:
-            regulatory_considerations.append(f"• {regulation} - {timeline} ({impact}): {description}")
+            regulatory_considerations.append(f"* **{regulation}** - {timeline} ({impact_formatted}): {description}")
         else:
-            regulatory_considerations.append(f"• {description}")
+            regulatory_considerations.append(f"* {description}")
     
-    # Join lists with double line breaks for Streamlit display
-    market_trends_text = "\n\n".join(market_trends)
-    competitive_landscape_text = "\n\n".join(competitive_landscape)
-    regulatory_considerations_text = "\n\n".join(regulatory_considerations)
+    # Join lists with single line breaks for Markdown list formatting
+    market_trends_text = "\n".join(market_trends)
+    competitive_landscape_text = "\n".join(competitive_landscape)
+    regulatory_considerations_text = "\n".join(regulatory_considerations)
     
-    # Combine everything with clear section headers
+    # Create a horizontal divider to separate sections
+    divider = "---"
+    
+    # Combine everything with clear section headers in Markdown format
     combined_response = f"""
-HISTORICAL DATA ANALYSIS
-=======================
+## 📊 Historical Data Analysis
 {initial_response}
 
+{divider}
 
-MARKET TRENDS
-============
+## 📈 Market Trends
 {market_trends_text}
 
+{divider}
 
-COMPETITIVE LANDSCAPE
-===================
+## 🏢 Competitive Landscape
 {competitive_landscape_text}
 
+{divider}
 
-REGULATORY CONSIDERATIONS
-======================
+## 📝 Regulatory Considerations
 {regulatory_considerations_text}
     """
     
