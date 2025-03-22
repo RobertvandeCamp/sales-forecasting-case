@@ -90,12 +90,13 @@ def initialize_chat_interface() -> Optional[str]:
                 st.rerun()
     
     st.markdown("""
-    Ask questions about sales data and get AI-powered insights.
+    Ask questions about sales related data and get AI-powered insights.
     
     **Example questions:**
     - What were the top-selling products last month?
     - Predict sales for Energy Bars next week.
     - Show me the average sales of Nut & Seed Bars in the last 3 months.
+    - What is the current stock for Energy Bars?
     """)
     
     # Initialize session state for chat history if it doesn't exist
@@ -165,8 +166,6 @@ def add_assistant_message(message: str):
             st.session_state.username,
             st.session_state.chat_history
         )
-    
-    st.rerun()
 
 def display_sales_data_summary(sales_data: pd.DataFrame):
     """

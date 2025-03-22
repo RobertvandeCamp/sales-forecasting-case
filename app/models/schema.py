@@ -122,3 +122,7 @@ class AugmentedResponse(BaseModel):
     initial_response: SalesAnalysisResponse = Field(..., description="The initial sales response based on historical data")
     market_insights: NewMarketInsights = Field(..., description="Structured market insights from the Assistant")
     timestamp: datetime = Field(default_factory=datetime.now, description="Timestamp of the augmented response") 
+
+class InventoryResponse(BaseModel):
+    answer: str = Field(description="The answer to the user's question.")
+    source: str = Field(description="The inventory id of the answer.")

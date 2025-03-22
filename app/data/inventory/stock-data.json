@@ -1,0 +1,127 @@
+{
+  "last_updated": "2024-05-15T09:30:00Z",
+  "inventory_items": [
+    {
+      "id": "SNK001",
+      "name": "Energy Bars",
+      "category": "Nutrition Bars",
+      "sub_category": "Energy Bars",
+      "sku": "EB-001",
+      "quantity_in_stock": 3850,
+      "unit_price": 4.50,
+      "cost_price": 2.25,
+      "supplier": "HealthyFoods Co.",
+      "reorder_level": 1500,
+      "reorder_quantity": 3000,
+      "location": "Warehouse A",
+      "last_restock_date": "2024-05-10",
+      "tags": ["energy", "protein", "fitness", "workout"],
+      "variants": [
+        {
+          "name": "Chocolate Chip",
+          "sku": "EB-001-CC",
+          "quantity": 1250
+        },
+        {
+          "name": "Peanut Butter",
+          "sku": "EB-001-PB",
+          "quantity": 1350
+        },
+        {
+          "name": "Oatmeal Raisin",
+          "sku": "EB-001-OR",
+          "quantity": 1250
+        }
+      ],
+      "average_weekly_sales": 1350
+    },
+    {
+      "id": "SNK002",
+      "name": "Nut & Seed Bars",
+      "category": "Nutrition Bars",
+      "sub_category": "Nut Bars",
+      "sku": "NS-002",
+      "quantity_in_stock": 2750,
+      "unit_price": 5.00,
+      "cost_price": 2.75,
+      "supplier": "Nature's Best Foods",
+      "reorder_level": 1000,
+      "reorder_quantity": 2500,
+      "location": "Warehouse A",
+      "last_restock_date": "2024-05-08",
+      "tags": ["nuts", "seeds", "high-protein", "natural"],
+      "variants": [
+        {
+          "name": "Almond & Cashew",
+          "sku": "NS-002-AC",
+          "quantity": 950
+        },
+        {
+          "name": "Mixed Seeds",
+          "sku": "NS-002-MS",
+          "quantity": 850
+        },
+        {
+          "name": "Pecan & Walnut",
+          "sku": "NS-002-PW",
+          "quantity": 950
+        }
+      ],
+      "average_weekly_sales": 900
+    },
+    {
+      "id": "SNK003",
+      "name": "Raw & Fruit Bars",
+      "category": "Nutrition Bars",
+      "sub_category": "Fruit Bars",
+      "sku": "RF-003",
+      "quantity_in_stock": 3200,
+      "unit_price": 4.50,
+      "cost_price": 2.10,
+      "supplier": "Organic Harvest Inc.",
+      "reorder_level": 1200,
+      "reorder_quantity": 2800,
+      "location": "Warehouse B",
+      "last_restock_date": "2024-05-12",
+      "tags": ["raw", "fruit", "organic", "vegan"],
+      "variants": [
+        {
+          "name": "Mixed Berry",
+          "sku": "RF-003-MB",
+          "quantity": 1100
+        },
+        {
+          "name": "Apple Cinnamon",
+          "sku": "RF-003-AC",
+          "quantity": 1050
+        },
+        {
+          "name": "Tropical Blend",
+          "sku": "RF-003-TB",
+          "quantity": 1050
+        }
+      ],
+      "average_weekly_sales": 1200
+    }
+  ],
+  "suppliers": [
+    {
+      "name": "HealthyFoods Co.",
+      "contact": "supplier@healthyfoods.com",
+      "phone": "555-123-4567",
+      "lead_time_days": 3
+    },
+    {
+      "name": "Nature's Best Foods",
+      "contact": "orders@naturesbest.com",
+      "phone": "555-987-6543",
+      "lead_time_days": 4
+    },
+    {
+      "name": "Organic Harvest Inc.",
+      "contact": "supply@organicharvest.com",
+      "phone": "555-456-7890",
+      "lead_time_days": 5
+    }
+  ]
+}

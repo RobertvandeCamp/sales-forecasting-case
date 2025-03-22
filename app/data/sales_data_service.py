@@ -68,7 +68,7 @@ def generate_sales_data_summary(sales_data: pd.DataFrame) -> dict:
                             summary["quarterly_trends"][int(year)][int(quarter)][product] = int(product_quarter_data['Sales_Units'].values[0])
         
         logger.info("Sales data summary generated successfully")
-        logger.info(f"Sales data summary: {json.dumps(summary, indent=2)}")
+        logger.debug(f"Sales data summary: {json.dumps(summary, indent=2)}")
 
         return summary
         

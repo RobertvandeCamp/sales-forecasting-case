@@ -12,7 +12,7 @@ from ui.chat_interface import (
     add_assistant_message,
     display_sales_data_summary
 )
-from models.schema import SalesQuery, SalesAnalysisResponse, AugmentedResponse
+from models.schema import InventoryResponse, SalesQuery, SalesAnalysisResponse, AugmentedResponse
 from app.data.sales_data_service import generate_sales_data_summary
 from app.api.assistant_client import AssistantClient
 
@@ -47,7 +47,7 @@ def main():
             
             # Process query with OpenAI (Stage 1: Historical Analysis)
             with st.spinner("Analyzing historical data..."):
-                sales_response:SalesAnalysisResponse = st.session_state.openai_client.process_sales_query(sales_query, st.session_state.sales_data_summary)
+                sales_response, inventory_response = st.session_state.openai_client.process_sales_query(sales_query, st.session_state.sales_data_summary)
             
             # Check if we have products and time period in the structured data
             has_product = len(sales_response.products) > 0
@@ -60,13 +60,17 @@ def main():
                     augmented_response:AugmentedResponse = st.session_state.assistant_client.augment_sales_response(sales_response)
                 
                 # Format the combined response for display
-                combined_response = format_augmented_response(augmented_response)
+                historical_and_insights_response = format_augmented_response(augmented_response)
                 
                 # Add assistant message to chat history
-                add_assistant_message(combined_response)
+                add_assistant_message(historical_and_insights_response)
+
+                add_assistant_message(inventory_response.answer + " (Inventory ID: " + inventory_response.source + ")")
             else:
                 # Just use the historical analysis if we couldn't identify product/time period
                 add_assistant_message(sales_response.response_text)
+            
+            st.rerun()
     
     except Exception as e:
         logger.error(f"Error in main function: {str(e)}")
