@@ -5,7 +5,7 @@ import openai
 from typing import Dict, Any, List
 from app.data.inventory import inventory_service
 from app.utils.logger import get_logger
-from app.models.schema import InventoryResponse, SalesQuery, SalesAnalysisResponse, inventory_response_json_schema
+from app.models.schema import InventoryResponse, SalesQuery, SalesAnalysisResponse, InventoryResponseSchema
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
 import traceback
@@ -77,14 +77,7 @@ class OpenAIClient:
 
             logger.info(f"Sales query processed successfully")
 
-            if sales_response.products:
-                inventory_response = self.process_inventory_query(
-                    sales_response.products
-                )
-            else:
-                inventory_response = None
-
-            return sales_response, inventory_response
+            return sales_response
 
         except Exception as e:
             logger.error(f"Error processing sales query: {str(e)}")
@@ -217,7 +210,7 @@ class OpenAIClient:
                 model=self.model,
                 input=messages,
                 tools=tools,
-                text=inventory_response_json_schema # This is the JSON schema for the response.
+                text=InventoryResponseSchema.inventory_response_json_schema # This is the JSON schema for the response.
             )
 
             logger.info(f"Inventory Completion 2: {completion_2.output_text}")

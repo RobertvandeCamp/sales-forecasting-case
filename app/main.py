@@ -9,8 +9,7 @@ from app.api.openai_client import OpenAIClient
 from ui.chat_interface import (
     initialize_chat_interface,
     add_user_message, 
-    add_assistant_message,
-    display_sales_data_summary
+    add_assistant_message
 )
 from models.schema import InventoryResponse, SalesQuery, SalesAnalysisResponse, AugmentedResponse
 from app.data.sales_data_service import generate_sales_data_summary
@@ -47,12 +46,22 @@ def main():
             
             # Process query with OpenAI (Stage 1: Historical Analysis)
             with st.spinner("Analyzing historical data..."):
-                sales_response, inventory_response = st.session_state.openai_client.process_sales_query(sales_query, st.session_state.sales_data_summary)
+                sales_response =  st.session_state.openai_client.process_sales_query(sales_query, st.session_state.sales_data_summary)
+                # Create a temporary container to show intermediate result
+                historical_analysis_container = st.empty()
+                historical_analysis_container.markdown(f"💡 **Historical Analysis:**\n{sales_response.response_text}")
             
             # Check if we have products and time period in the structured data
             has_product = len(sales_response.products) > 0
+            if has_product:
+                inventory_response = st.session_state.openai_client.process_inventory_query(sales_response.products)
+                # Create another temporary container for inventory result
+                inventory_container = st.empty()
+                inventory_container.markdown(f"📦 **Current Inventory:**\n{inventory_response.answer}")
+            else:
+                inventory_response = None
+
             has_time_period = sales_response.time_period != "unknown"
-            
             # Only proceed with augmentation if we have identified products and time period
             if has_product and has_time_period:
                 # Process with Assistant (Stage 2: Market Context Augmentation)
@@ -62,10 +71,12 @@ def main():
                 # Format the combined response for display
                 historical_and_insights_response = format_augmented_response(augmented_response)
                 
-                # Add assistant message to chat history
-                add_assistant_message(historical_and_insights_response)
+                # Clear the temporary result before showing final response
+                historical_analysis_container.empty()
+                inventory_container.empty()
 
                 add_assistant_message(inventory_response.answer + " (Inventory ID: " + inventory_response.source + ")")
+                add_assistant_message(historical_and_insights_response)
             else:
                 # Just use the historical analysis if we couldn't identify product/time period
                 add_assistant_message(sales_response.response_text)

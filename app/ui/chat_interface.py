@@ -166,24 +166,3 @@ def add_assistant_message(message: str):
             st.session_state.username,
             st.session_state.chat_history
         )
-
-def display_sales_data_summary(sales_data: pd.DataFrame):
-    """
-    Display a summary of the sales data.
-    
-    Args:
-        sales_data (pd.DataFrame): The sales data
-    """
-    with st.expander("Sales Data Summary"):
-        # Display basic info
-        st.write(f"**Data Period:** {sales_data['Date'].min().strftime('%Y-%m-%d')} to {sales_data['Date'].max().strftime('%Y-%m-%d')}")
-        st.write(f"**Number of Records:** {len(sales_data)}")
-        st.write(f"**Products:** {', '.join(sales_data['Product'].unique())}")
-        
-        # Display summary statistics
-        st.write("**Summary Statistics:**")
-        st.dataframe(sales_data[['Sales_Units', 'Revenue']].describe())
-        
-        # Display sample data
-        st.write("**Sample Data:**")
-        st.dataframe(sales_data.head()) 
