@@ -126,3 +126,20 @@ class AugmentedResponse(BaseModel):
 class InventoryResponse(BaseModel):
     answer: str = Field(description="The answer to the user's question.")
     source: str = Field(description="The inventory id of the answer.")
+
+    inventory_response_json_schema = {
+            "format": {
+                "type": "json_schema",
+                "name": "inventory_response",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "answer": {"type": "string"},
+                        "source": {"type": "string"},
+                    },
+                    "required": ["answer", "source"],
+                    "additionalProperties": False,
+                },
+                "strict": True,
+            }
+        }
